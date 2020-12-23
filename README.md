@@ -1,19 +1,19 @@
 <!--
  * @Author: ice
  * @Date: 2020-12-14 17:45:16
- * @LastEditTime: 2020-12-23 22:10:30
+ * @LastEditTime: 2020-12-23 22:19:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /cra-template-rack/README.md
 -->
-# cra-template-rack
+# cra-template-rack-typescript
 
 This is a template for [Create React App](https://github.com/facebook/create-react-app).
 
 ## usage
 
 ```sh
-$ npx create-react-app my-app --template rack
+$ npx create-react-app my-app --template rack-typescript
 ```
 ## Highlights
 > Compared with create-react-app's official template cra-template
