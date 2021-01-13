@@ -1,0 +1,57 @@
+.auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url('./bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.modalBox {
+  position: relative;
+  width: 454px;
+  padding: 52px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 10px;
+}
+.input {
+  height: 40px;
+  border-radius: 4px;
+}
+.forgot {
+  float: right;
+}
+.modalHeader {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.title {
+  margin-top: 10px;
+}
+.subTitle {
+  font-size: 14px;
+}
+.back {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 5px 16px;
+  font-size: 26px;
+  a {
+    color: #000;
+  }
+}
+.logo {
+  margin-bottom: 20px;
+}
+.success {
+  color: #52c41a;
+  font-size: 80px;
+  text-align: center;
+  font-weight: bold;
+}
+.tips {
+  text-align: center;
+  margin: 10px 0 30px;
+}

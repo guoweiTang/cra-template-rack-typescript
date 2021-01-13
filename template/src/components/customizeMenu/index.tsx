@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { HomeOutlined, ProjectOutlined } from '@ant-design/icons';
 import routes from '../../router';
 
-const App = () => {
+const CustomizeMenu = () => {
   const location = useLocation();
   const [activeName, setActiveName] = useState<string>(location.pathname);
   const handleChangeMenu = (key: string | number) => {
@@ -37,4 +37,4 @@ const App = () => {
     </>
   );
 };
-export default App;
+export default CustomizeMenu;

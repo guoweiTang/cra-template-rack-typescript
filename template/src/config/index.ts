@@ -16,3 +16,15 @@ export const Names: string[] = [
   'Philips',
   'tang',
 ];
+export const Colors: string[] = [
+  'green',
+  'gold',
+  'volcano',
+  'orange',
+  'red',
+  'geekblue',
+  'cyan',
+  'blue',
+];
+export const emailPhonePattern = /^((\w+@\w+\.\w+(\.\w+)?)|(1[3-9]\d{9}))$/;
+export const passwordPattern = /^(?=.*[a-z])(?=.*\d)[^]{6,20}$/;

@@ -4,6 +4,7 @@ package.json
 .dockerignore
 .DS_Store
 .eslintignore
+*.jpg
 *.png
 *.toml
 docker

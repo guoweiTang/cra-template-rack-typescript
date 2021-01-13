@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import './index.scss';
 import { selectUser } from '../../store/userSlice';
-import logo from './img/logo.svg';
+import logo from '../../assets/img/logo.svg';
 
 function App() {
   const user = useSelector(selectUser);

@@ -1,0 +1,83 @@
+@import '~antd/dist/antd.css';
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.page-header {
+  display: flex;
+  z-index: 1;
+  justify-content: space-between;
+  background-color: #fff;
+  height: 64px;
+  padding: 0 50px;
+  line-height: 64px;
+  font-size: 18px;
+  transition: width 0.2s;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  .toobar {
+    display: flex;
+    justify-content: space-between;
+  }
+  .sider-switch,
+  .full-screen,
+  .language,
+  .avatar {
+    cursor: pointer;
+    margin-left: 30px;
+  }
+  .sider-switch {
+    margin: 0;
+  }
+  .avatar {
+    font-size: 14px;
+    display: flex;
+    span + span {
+      margin-left: 8px;
+    }
+  }
+}
+.page-content {
+  margin: 16px;
+}
+.section-pro {
+  margin: 16px 0;
+  & + & {
+    margin-top: 30px;
+  }
+}
+.section-pro .ant-page-header {
+  background-color: #fff;
+  .ant-page-header-heading-title {
+    font-size: 16px;
+    font-weight: normal;
+  }
+}
+.sider-logo {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px;
+  &.active {
+    padding: 16px;
+    span {
+      white-space: nowrap;
+      display: block;
+    }
+  }
+  span {
+    display: none;
+    line-height: 50px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+}
