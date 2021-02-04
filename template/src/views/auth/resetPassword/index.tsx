@@ -1,64 +1,82 @@
 import React, { useState } from 'react';
-import { Typography, Steps } from 'antd';
-import { RollbackOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Typography, message } from 'antd';
+import { MailOutlined, RollbackOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import utilStyle from '../assets/util.module.scss';
 import logo from '../../../assets/img/logo.svg';
-import PreSend from './preSend';
-import Send from './send';
-import Reset from './reset';
-import Result from './result';
+import { emailPattern } from '../../../config';
+import { sendEmail } from '../../service';
 
 const { Title } = Typography;
-const { Step } = Steps;
 
-export default function ResetPassword() {
-  const [current, setCurrent] = useState(0);
-  const [count, setCount] = useState(3);
-
+const ResetPassword: React.FC = () => {
+  const [loading, setLoading] = useState(false);
+  const [form] = Form.useForm();
+  // 发送验证码
+  const onFinish = async () => {
+    const res = await form.validateFields();
+    setLoading(true);
+    try {
+      await sendEmail({ ...res });
+      message.success('邮件发送成功！');
+      setLoading(false);
+    } catch (err) {
+      message.error('邮件发送失败');
+      setLoading(false);
+    }
+  };
   return (
     <div className={utilStyle.auth}>
       <div className={utilStyle.modalBox}>
-        {current === 3 ? (
-          <Result count={count} setCount={setCount} />
-        ) : (
-          <>
-            <Link to="login" className={utilStyle.back}>
-              <RollbackOutlined />
-            </Link>
-            <div className={utilStyle.modalHeader}>
-              <img
-                className={utilStyle.logo}
-                src={logo}
-                width="160"
-                alt="logo"
-              />
-              <Title className={utilStyle.title} level={2}>
-                重设密码
-              </Title>
-              <Steps current={current} percent={60}>
-                <Step />
-                <Step />
-                <Step />
-              </Steps>
-              <div className={utilStyle.subTitle}>
-                请输入你的邮箱或手机号以重新设置你的密码
-              </div>
-            </div>
-            {current === 0 ? (
-              <PreSend setCurrent={setCurrent} />
-            ) : current === 1 ? (
-              <Send setCurrent={setCurrent} />
-            ) : (
-              <Reset
-                count={count}
-                setCount={setCount}
-                setCurrent={setCurrent}
-              />
-            )}
-          </>
-        )}
+        <Link to="login" className={utilStyle.back}>
+          <RollbackOutlined />
+        </Link>
+        <div className={utilStyle.modalHeader}>
+          <img className={utilStyle.logo} src={logo} width="160" alt="logo" />
+          <Title className={utilStyle.title} level={2}>
+            重设密码
+          </Title>
+          <div className={utilStyle.subTitle}>
+            请输入你的邮箱以重新设置你的密码
+          </div>
+        </div>
+        <Form
+          name="normal_login"
+          className="login-form"
+          form={form}
+          onFinish={onFinish}
+        >
+          <Form.Item
+            name="email"
+            rules={[
+              { required: true, message: '请输入你的邮箱！' },
+              {
+                pattern: emailPattern,
+                message: '请输入正确的邮箱！',
+              },
+            ]}
+          >
+            <Input
+              className={utilStyle.input}
+              prefix={<MailOutlined className="site-form-item-icon" />}
+              placeholder="邮箱"
+            />
+          </Form.Item>
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className={utilStyle.input}
+              loading={loading}
+              block
+            >
+              发送
+            </Button>
+          </Form.Item>
+        </Form>
       </div>
     </div>
   );
-}
+};
+
+export default ResetPassword;

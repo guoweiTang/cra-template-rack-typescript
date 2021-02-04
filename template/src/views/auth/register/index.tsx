@@ -1,29 +1,41 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Row, Col } from 'antd';
-import { Link } from 'react-router-dom';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { Form, Input, Button, message } from 'antd';
+import { useHistory } from 'react-router-dom';
+import { LockOutlined } from '@ant-design/icons';
 import utilStyle from '../assets/util.module.scss';
 import logo from '../../../assets/img/logo.svg';
-import { emailPattern } from '../../../config';
-import { getToken } from '../../service';
-// import qs from 'qs';
+import { getToken, register } from '../../service';
+import qs from 'qs';
 
-// const search = window.location.hash.match(/\?(.+)/);
-// const queryParams = search && qs.parse(search[1]);
 export default function Login() {
   const [loading, setLoading] = useState(false);
+  const search = window.location.hash.match(/\?(.+)/);
+  const queryParams = search && qs.parse(search[1]);
+  if (!queryParams) message.error('网址有误，请检查重试！');
+
+  const history = useHistory();
   const [form] = Form.useForm();
   const onFinish = async (values: any) => {
+    if (!queryParams) return;
     setLoading(true);
     try {
-      const res: any = await getToken({
+      await register({
+        ...queryParams,
         ...values,
-        is_admin: false,
       });
       setLoading(false);
-      localStorage.setItem('ACCESS_TOKEN_USER', res.data?.access_token);
-      localStorage.setItem('REFRESH_TOKEN_USER', res.data?.refresh_token);
-      window.location.href = '/';
+      try {
+        const res: any = await getToken({
+          email: queryParams.email,
+          ...values,
+          is_admin: false,
+        });
+        localStorage.setItem('ACCESS_TOKEN_USER', res.data?.access_token);
+        localStorage.setItem('REFRESH_TOKEN_USER', res.data?.refresh_token);
+        window.location.href = '/';
+      } catch (err) {
+        history.push('login');
+      }
     } catch (err) {
       setLoading(false);
       console.error(err);
@@ -41,23 +53,6 @@ export default function Login() {
           initialValues={{ remember: true }}
           onFinish={onFinish}
         >
-          <Form.Item
-            label="邮箱"
-            name="email"
-            rules={[
-              { required: true },
-              {
-                pattern: emailPattern,
-                message: '请输入正确的邮箱！',
-              },
-            ]}
-          >
-            <Input
-              className={utilStyle.input}
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="username"
-            />
-          </Form.Item>
           <Form.Item label="密码" name="password" rules={[{ required: true }]}>
             <Input.Password
               className={utilStyle.input}
@@ -66,11 +61,7 @@ export default function Login() {
               placeholder="Password"
             />
           </Form.Item>
-          <Row justify="end" style={{ marginBottom: 10 }}>
-            <Col>
-              <Link to="reset-password">忘记密码？</Link>
-            </Col>
-          </Row>
+
           <Form.Item>
             <Button
               type="primary"
@@ -79,7 +70,7 @@ export default function Login() {
               loading={loading}
               block
             >
-              登录
+              注册
             </Button>
           </Form.Item>
         </Form>

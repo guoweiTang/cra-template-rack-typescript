@@ -6,16 +6,9 @@
  * @Description: In User Settings Edit
  * @FilePath: /apis-webuser/src/config/index.js
  */
+const MOCK: boolean = process.env.REACT_APP_MOCK === 'true';
 
-export const BASEURL: string = 'http://192.168.11.13:10010';
-export const Names: string[] = [
-  'Jone',
-  'Jobs',
-  'Tom',
-  'Jack',
-  'Philips',
-  'tang',
-];
+export const BASEURL: string = MOCK ? '/' : 'https://examples.com';
 export const Colors: string[] = [
   'green',
   'gold',
@@ -26,5 +19,5 @@ export const Colors: string[] = [
   'cyan',
   'blue',
 ];
-export const emailPhonePattern = /^((\w+@\w+\.\w+(\.\w+)?)|(1[3-9]\d{9}))$/;
+export const emailPattern = /^\w+@\w+\.\w+(\.\w+)?$/;
 export const passwordPattern = /^(?=.*[a-z])(?=.*\d)[^]{6,20}$/;

@@ -15,7 +15,7 @@ import App from './index';
 /**
  * 冒烟测试
  */
-it('renders page tableList', () => {
+it('renders page project', () => {
   const { getByText } = render(
     <Provider store={store}>
       <App />

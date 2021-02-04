@@ -7,6 +7,15 @@
  * @FilePath: /my-app/src/store/data.d.ts
  */
 export interface User {
+  email: string;
+  id: number;
+  lab: {
+    id: number;
+    name: string;
+    is_active: boolean;
+  };
+  is_active: boolean;
+  can_manage_ana_tools: boolean;
   name: string;
-  age: number;
+  role: string;
 }

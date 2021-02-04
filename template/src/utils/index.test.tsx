@@ -6,11 +6,10 @@
  * @Description: In User Settings Edit
  * @FilePath: /my-app/src/utils/index.test.js
  */
-import { getRandomName } from './index';
-import { Names } from '../config';
+import { getRandom } from './index';
 
 describe('Test utils', () => {
-  it('getRandomName', () => {
-    expect(Names).toContain(getRandomName());
+  it('getRandom', () => {
+    expect([1, 2, 3, 4, 5]).toContain(getRandom(1, 5));
   });
 });

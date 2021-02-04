@@ -11,6 +11,7 @@ interface SimRoute {
   exact?: boolean;
   title: string;
   icons?: string;
+  isOuterMenu?: boolean;
   component: any;
 }
 export interface RouteItem extends SimRoute {

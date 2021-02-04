@@ -31,7 +31,13 @@
     "eslintConfig": {
       "extends": ["react-app", "react-app/jest"]
     },
+    "husky": {
+      "hooks": {
+        "pre-commit": "npm run lint"
+      }
+    },
     "devDependencies": {
+      "husky": "^4.3.8",
       "@testing-library/jest-dom": "^5.11.6",
       "@testing-library/react": "^11.2.2",
       "@testing-library/user-event": "^12.5.0",

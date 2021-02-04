@@ -1,27 +1,28 @@
-/*
- * @Author: your name
- * @Date: 2020-12-14 18:03:16
- * @LastEditTime: 2020-12-23 19:10:23
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /cra-template-rack/template/src/router/index.js
- */
 import App from '../views/home';
-import TableList from '../views/tableList';
+import Project from '../views/project/index';
+import UserInfo from '../views/userInfo';
 import { RouteItem } from './data';
 const routes: RouteItem[] = [
   {
     path: '/',
     exact: true,
-    title: 'Home',
+    title: '首页',
     icons: 'HomeOutlined',
     component: App,
   },
   {
-    path: '/tableList',
-    title: 'Table List',
+    path: '/project',
+    exact: true,
+    title: '项目',
     icons: 'ProjectOutlined',
-    component: TableList,
+    component: Project,
+  },
+  {
+    path: '/userInfo',
+    title: '我的账户',
+    icons: 'ProjectOutlined',
+    component: UserInfo,
+    isOuterMenu: true,
   },
 ];
 

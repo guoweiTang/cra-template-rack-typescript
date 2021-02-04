@@ -10,24 +10,43 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User } from './data';
 
 const initialState: User = {
-  name: 'tang',
-  age: 18,
+  email: '',
+  id: -1,
+  lab: {
+    id: -1,
+    name: '',
+    is_active: false,
+  },
+  is_active: false,
+  can_manage_ana_tools: false,
+  name: '',
+  role: '',
 };
 
 const sliceVal = {
   name: 'user',
   initialState,
   reducers: {
-    addAge: (state: User) => {
-      state.age++;
+    updataInfo: (state: User, action: PayloadAction<any>) => {
+      const data = action.payload;
+      state.email = data.email;
+      state.id = data.id;
+      state.lab = data.lab;
+      state.is_active = data.is_active;
+      state.can_manage_ana_tools = data.can_manage_ana_tools;
+      state.name = data.name;
+      state.role = data.role;
     },
-    reName: (state: User, action: PayloadAction<string>) => {
+    updateName: (state: User, action: { payload: string }) => {
       state.name = action.payload;
+    },
+    updateLabName: (state: User, action: { payload: string }) => {
+      state.lab.name = action.payload;
     },
   },
 };
-const userSlice = createSlice(sliceVal);
-export const { addAge, reName } = userSlice.actions;
-export const selectUser = (state: { user: User }) => state.user;
 
+const userSlice = createSlice(sliceVal);
+export const { updataInfo, updateName, updateLabName } = userSlice.actions;
+export const selectUser = (state: { user: User }) => state.user;
 export default userSlice.reducer;

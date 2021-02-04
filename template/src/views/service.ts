@@ -7,6 +7,35 @@
  * @FilePath: /cra-template-rack/template/src/views/service.js
  */
 import request from '../utils/request';
+import { LoginInfo, RegisterInfo } from './data';
+
+/**
+ * auth相关接口
+ */
+export function getToken(data: LoginInfo) {
+  return request('/auth/obtain-token', {
+    method: 'POST',
+    data: {
+      ...data,
+    },
+  });
+}
+export function register(data: RegisterInfo) {
+  return request('/user/register', {
+    method: 'POST',
+    data: {
+      ...data,
+    },
+  });
+}
+export function resetPassword(data: RegisterInfo) {
+  return request('/reset-password', {
+    method: 'POST',
+    data: {
+      ...data,
+    },
+  });
+}
 
 /**
  * service相关接口
@@ -42,6 +71,40 @@ export function deleteService(pathParams: { serviceId: string }, params = {}) {
     method: 'DELETE',
     data: {
       ...params,
+    },
+  });
+}
+
+export function getMyInfo(params = {}) {
+  return request(`/me`, {
+    data: {
+      ...params,
+    },
+  });
+}
+
+export function updateMyInfo(params = {}) {
+  return request(`/me`, {
+    method: 'PUT',
+    data: {
+      ...params,
+    },
+  });
+}
+
+export function sendEmail(data: { email: string }) {
+  return request('/resend-email/find-password', {
+    method: 'POST',
+    data: {
+      ...data,
+    },
+  });
+}
+export function sendRegisterEmail(data: { email: string }) {
+  return request('/resend-email/register', {
+    method: 'POST',
+    data: {
+      ...data,
     },
   });
 }
