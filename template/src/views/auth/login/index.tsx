@@ -7,6 +7,7 @@ import logo from '../../../assets/img/logo.svg';
 import { emailPattern } from '../../../config';
 import { getToken } from '../../service';
 // import qs from 'qs';
+import { setToken } from '../../../utils/token';
 
 // const search = window.location.hash.match(/\?(.+)/);
 // const queryParams = search && qs.parse(search[1]);
@@ -16,13 +17,14 @@ export default function Login() {
   const onFinish = async (values: any) => {
     setLoading(true);
     try {
-      const res: any = await getToken({
+      const {
+        data: { access_token, refresh_token },
+      } = await getToken({
         ...values,
         is_admin: false,
       });
       setLoading(false);
-      localStorage.setItem('ACCESS_TOKEN_USER', res.data?.access_token);
-      localStorage.setItem('REFRESH_TOKEN_USER', res.data?.refresh_token);
+      setToken(access_token, refresh_token);
       window.location.href = '/';
     } catch (err) {
       setLoading(false);

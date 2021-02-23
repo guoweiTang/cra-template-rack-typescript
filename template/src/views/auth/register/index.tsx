@@ -6,6 +6,7 @@ import utilStyle from '../assets/util.module.scss';
 import logo from '../../../assets/img/logo.svg';
 import { getToken, register } from '../../service';
 import qs from 'qs';
+import { setToken } from '../../../utils/token';
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -25,13 +26,14 @@ export default function Login() {
       });
       setLoading(false);
       try {
-        const res: any = await getToken({
+        const {
+          data: { access_token, refresh_token },
+        } = await getToken({
           email: queryParams.email,
           ...values,
           is_admin: false,
         });
-        localStorage.setItem('ACCESS_TOKEN_USER', res.data?.access_token);
-        localStorage.setItem('REFRESH_TOKEN_USER', res.data?.refresh_token);
+        setToken(access_token, refresh_token);
         window.location.href = '/';
       } catch (err) {
         history.push('login');

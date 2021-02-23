@@ -105,7 +105,7 @@ http.interceptors.response.use(
           Message.error(data.message);
           break;
         case 401:
-          refreshToken();
+          refreshToken(0, config);
           console.error('登录信息过期');
           break;
         case 422:
