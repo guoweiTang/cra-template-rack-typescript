@@ -1,16 +1,8 @@
-/*
- * @Author: your name
- * @Date: 2020-12-15 17:36:19
- * @LastEditTime: 2020-12-16 15:58:22
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /my-app/mock/db.js
- */
-import request from '../utils/request';
 import MockAdapter from 'axios-mock-adapter';
+import axios from 'axios';
 
 // This sets the mock adapter on the default instance
-var mock = new MockAdapter(request);
+var mock = new MockAdapter(axios);
 
 // Mock GET request to /users when param `searchText` is 'John'
 // arguments for reply are (status, data, headers)

@@ -1,3 +1,8 @@
+export interface SettingsItem {
+  is_production: 'true' | 'false';
+  api_origin: string;
+  api_pathname: string;
+}
 export interface LoginInfo {
   email: string;
   password: string;

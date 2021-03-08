@@ -22,3 +22,10 @@ Format the files in the directory src.
 ### `npm run lint`
 Check whether the files in the directory src are standardized.
 
+## /public/settings[-pro].json参数详解
+
+> 所有值均为string类型
+- is_production 是否为生产环境，枚举值："true" | "false"
+- api_origin API源，例："https://p2.nokafc.testing.poeticloud.com"
+- api_pathname API路径名称 例："/api/v1"
+- version 版本（非必填） 例："v1.0.0"

@@ -1,0 +1,6 @@
+{
+  "is_production": "true",
+  "api_origin": "http://example.com",
+  "api_pathname": "/api/v1",
+  "version": "v1.0.0"
+}
