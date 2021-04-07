@@ -14,6 +14,7 @@ import { LoginInfo, RegisterInfo } from './data';
  */
 export function getToken(data: LoginInfo) {
   return request()('/auth/obtain-token', {
+    skipAuthRefresh: true,
     method: 'POST',
     data: {
       ...data,
@@ -22,6 +23,7 @@ export function getToken(data: LoginInfo) {
 }
 export function register(data: RegisterInfo) {
   return request()('/user/register', {
+    skipAuthRefresh: true,
     method: 'POST',
     data: {
       ...data,
@@ -30,6 +32,7 @@ export function register(data: RegisterInfo) {
 }
 export function resetPassword(data: RegisterInfo) {
   return request()('/reset-password', {
+    skipAuthRefresh: true,
     method: 'POST',
     data: {
       ...data,
@@ -94,6 +97,7 @@ export function updateMyInfo(params = {}) {
 
 export function sendEmail(data: { email: string }) {
   return request()('/resend-email/find-password', {
+    skipAuthRefresh: true,
     method: 'POST',
     data: {
       ...data,
@@ -102,6 +106,7 @@ export function sendEmail(data: { email: string }) {
 }
 export function sendRegisterEmail(data: { email: string }) {
   return request()('/resend-email/register', {
+    skipAuthRefresh: true,
     method: 'POST',
     data: {
       ...data,

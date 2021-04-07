@@ -1,11 +1,12 @@
-import axios, { AxiosInstance } from 'axios';
+import axios from 'axios';
 import { message as Message } from 'antd';
 import { initToken, refreshToken } from './token';
 import { getSettings } from '../config';
 import { MessageType } from 'antd/lib/message';
 import createAuthRefreshInterceptor from 'axios-auth-refresh';
+import { CustomizeAxiosInstance } from '../views/data';
 
-let http: AxiosInstance;
+let http: CustomizeAxiosInstance;
 export default function request() {
   const { api_origin, api_pathname } = getSettings();
   http = axios.create({
@@ -49,7 +50,9 @@ export default function request() {
           ...{ _t: new Date().getTime() },
         };
       }
-      initToken(config);
+      if (!config.skipAuthRefresh) {
+        initToken(config);
+      }
       return config;
     },
     (error) => {
