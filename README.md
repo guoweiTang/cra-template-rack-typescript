@@ -10,11 +10,17 @@
 
 This is a template for [Create React App](https://github.com/facebook/create-react-app).
 
-## usage
+## Usage
 
 ```sh
 $ npx create-react-app my-app --template rack-typescript
 ```
+## Views
+![image](https://user-images.githubusercontent.com/8178166/114004851-9f95b300-9891-11eb-85f6-1fd176dae6e1.png)
+![image](https://user-images.githubusercontent.com/8178166/114005069-ca800700-9891-11eb-8496-41805e6760fb.png)
+![image](https://user-images.githubusercontent.com/8178166/114005109-d370d880-9891-11eb-9e7a-bf16496fd081.png)
+
+
 ## Highlights
 > Compared with create-react-app's official template cra-template
 - typescript
