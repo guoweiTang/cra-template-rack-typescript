@@ -7,6 +7,10 @@ export function getSettings(): SettingsItem {
 export function setSettings(val: SettingsItem) {
   settings = val;
 }
+export const token = {
+  accessTokenValue: 'ACCESS_TOKEN_USER',
+  refreshTokenValue: 'REFRESH_TOKEN_USER',
+}
 export const Colors: string[] = [
   'green',
   'gold',
