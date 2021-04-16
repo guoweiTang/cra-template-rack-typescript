@@ -1,6 +1,6 @@
 {
   "name": "cra-template-rack-typescript",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "keywords": [
     "react",
     "create-react-app",
@@ -9,6 +9,7 @@
     "typescript"
   ],
   "description": "The template for Create React App.",
+  "typings": "template/src/views/data.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/poeticloud/cra-template-rack-typescript.git",
